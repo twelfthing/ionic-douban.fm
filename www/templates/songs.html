@@ -1,0 +1,41 @@
+<ion-view view-title="歌单">{{current}}
+    <ion-nav-title>{{songs[current].title}}</ion-nav-title>
+    <ion-content>
+        <div class="music-player">
+            <audio media-player="mediaPlayer" playlist="songs"></audio>
+            <div>
+                    <img src="{{mediaPlayer.$playlist[mediaPlayer.currentTrack-1].picture}}">
+                </div>
+            <div class="info">
+                
+                <div class="left">
+                    <a href="javascript:;" ng-click="like(mediaPlayer)" ng-class="{'icon-heart':mediaPlayer.$playlist[mediaPlayer.currentTrack-1].like == 0}"></a>
+                </div>
+                <div class="center">
+                    <div class="jp-playlist">
+                        <ul style="display: block;">
+                            <li class="jp-playlist-current">
+                                <div>
+                                    <a href="javascript:;" class="jp-playlist-item jp-playlist-current" tabindex="1">{{mediaPlayer.$playlist[mediaPlayer.currentTrack-1].title}} 
+                                        <span class="jp-artist">{{mediaPlayer.$playlist[mediaPlayer.currentTrack-1].artist}}</span>
+                                    </a>
+                                </div>
+                            </li>
+                           
+                        </ul>
+                    </div>
+                </div>
+                <div class="right">
+                    <a href="javascript:;" ng-click="skip(mediaPlayer)" class="icon-repeat"></a>
+                </div>
+            </div>
+            <div class="controls" ng-if="songs.length > 0">
+                <div class="current jp-current-time">{{mediaPlayer.currentTime|floatToTime}}</div>
+                <div class="play-controls" ng-init="mediaPlayer.play()">
+                    <a href="javascript:;" ng-click="mediaPlayer.playPause()" ng-class="{ 'icon-play jp-play': mediaPlayer.playing, 'icon-pause jp-pause': !mediaPlayer.playing }"></a>
+                    <a href="javascript:;" ng-click="next(mediaPlayer)" class="icon-next jp-next" title="下一首"></a>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
