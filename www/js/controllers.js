@@ -12,7 +12,7 @@ angular.module('starter.controllers', [])
     // Form data for the login modal
     $scope.loginData = {
         email: 'twelfthing@gmail.com',
-        password: '123091962ccheng',
+        password: 'xxx',
         app_name: baseconfig.appName,
         version: baseconfig.version,
     };
